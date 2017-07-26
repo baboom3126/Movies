@@ -78,7 +78,7 @@
           String description = rs.getString("description");
           String createdAt = rs.getString("createdAt");
           String des="";
-          int rating=rs.getInt("rating");
+          float rating_f=rs.getFloat("rating_f");
           int number=rs.getInt("number");
           try{
           des=description.substring(0,12)+"...";
@@ -94,7 +94,7 @@ catch(Exception e){
     <th class="th1"><%=des%></th>
     <th class="th1"><img src="../img/<%=image%>" width="75px"></th>
     <th class="th1">
-<%=rating%> / <%=number%>
+<%=rating_f%> / <%=number%>
     </th>
     <th class="th1">
       <form class="" action="edit.jsp" method="post">
