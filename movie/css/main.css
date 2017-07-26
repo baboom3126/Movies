@@ -2,7 +2,7 @@ body{
   display: inline-block;
   width:100%;
   text-align: center;
-  background-image: url(../img/0.jpg);
+  background-image: url(../img/00.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Microsoft JhengHei,Arial;
@@ -13,7 +13,7 @@ body{
 }
 .card_header{
   margin-left:200px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bolder;
   padding: 10px;
   color: white;
