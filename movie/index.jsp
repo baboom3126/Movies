@@ -9,7 +9,7 @@
 </jsp:useBean>
 <%
   database.connectDB();
-  database.query("select * from products order by id;");
+  database.query("select * from products order by rating_f desc;");
   ResultSet rs = database.getRS();
   int count=2;
 %>
@@ -49,6 +49,8 @@
           String image = rs.getString("image");
           String description = rs.getString("description");
           String createdAt = rs.getString("createdAt");
+          int rating = rs.getInt("rating");
+          float rating_f=rs.getFloat("rating_f");
 if(count%2==0){
   out.print("<div class='row'>");
 }
@@ -56,14 +58,18 @@ if(count%2==0){
 <div class="card " style=" margin:20px; width:45%; display:inline-block; float:left;">
   <img src="./img/<%=image%>" alt="" width="200px"  style="float:left;">
     <div class="card_header">
-      <%=name%>
+      <%=name%>(<%=rating_f%>分)
     </div>
     <div class="card_content">
 <%=description%>
     </div>
 
     <div class="card_bottom">
-      <a href="#" class="btn">訂票</a>
+      <form class="" action="./rating.jsp" method="post">
+        <input type="hidden" name="movie_name" value="<%=name%>">
+
+<button type="submit" class="btn" name="button" value="<%=id%>">評分</button>
+      </form>
     </div>
 </div>
 
@@ -80,7 +86,11 @@ count++;
 
 
 
-
+<%
+try{
+rs.close();}
+catch(Exception e){}
+%>
 
   </body>
 
