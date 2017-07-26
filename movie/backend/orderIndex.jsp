@@ -23,7 +23,6 @@
     <title>Document</title>
     <script src="js/jquery.js" charset="utf-8"></script>
     <script src="js/bootstrap.js" charset="utf-8"></script>
-    <script src="js/semantic.js" charset="utf-8"></script>
     <script src="js/materialize.js" charset="utf-8"></script>
 
     <!-- Bootstrap Core CSS -->
@@ -31,7 +30,6 @@
     <!-- Semantic UI CSS -->
     <link href="css/materialize.css" rel="stylesheet">
 
-    <link href="css/semantic.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
     <script type="text/javascript">
@@ -62,7 +60,12 @@
   <div class="content_table">
   <table border="1px" class="striped" style="border-style:dashed;">
   <tr>
-    <th class="th11" height="70px">ID</th><th class="th11">名字</th><th class="th11">描述</th><th class="th11">相片</th><th class="th11">修改</th><th class="th11">刪除</th>
+    <th class="th11" height="70px">ID</th><th class="th11">名字</th><th class="th11">描述</th>
+    <th class="th11">相片</th>
+
+    <th class="th11">評分/人數</th>
+    <th class="th11">其他</th>
+
   </tr>
 
   <%
@@ -75,6 +78,8 @@
           String description = rs.getString("description");
           String createdAt = rs.getString("createdAt");
           String des="";
+          int rating=rs.getInt("rating");
+          int number=rs.getInt("number");
           try{
           des=description.substring(0,12)+"...";
 }
@@ -88,8 +93,14 @@ catch(Exception e){
     <th class="th1"><%=name%></th>
     <th class="th1"><%=des%></th>
     <th class="th1"><img src="../img/<%=image%>" width="75px"></th>
-    <th class="th1"><a href="#" class="btn">修改</a></th>
     <th class="th1">
+<%=rating%> / <%=number%>
+    </th>
+    <th class="th1">
+      <form class="" action="edit.jsp" method="post">
+        <input type="hidden" name="hidden_edit" value="<%=id%>">
+        <button type="submit" name="button" class="btn" value="<%=id%>">修改</button>
+</form><br>
       <form class="" action="delete.jsp" method="post">
         <input type="hidden" name="hidden" value="<%=id%>">
         <button type="submit" name="button" class="btn" value="<%=id%>">刪除</button>
